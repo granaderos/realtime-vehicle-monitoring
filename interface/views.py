@@ -93,6 +93,7 @@ def save_and_convert_image(request):
         text = pytesseract.image_to_string(Cropped, config=config)
     print("Detected Number is:", text)
     if text is not None and text != "NONE" and text != "":
+        text = text.replace(",", "")
         server_ip = "http://192.168.43.84:8000/api/entries/"
 
         data = dict(
